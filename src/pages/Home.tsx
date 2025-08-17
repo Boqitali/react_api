@@ -1,11 +1,8 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getUsers, deleteUser, type User } from "../api/users";
-import { useDispatch } from "react-redux";
-import { setSelectedUser } from "../features/usersSlice";
 
 export default function Home() {
   const queryClient = useQueryClient();
-  const dispatch = useDispatch();
 
   const {
     data: users = [],
@@ -44,13 +41,7 @@ export default function Home() {
               <td className="p-2">{u.name}</td>
               <td className="p-2">{u.email}</td>
               <td className="p-2">{u.phone}</td>
-              <td className="p-2 flex gap-2">
-                <button
-                  className="bg-yellow-500 px-2 py-1 rounded text-white"
-                  onClick={() => dispatch(setSelectedUser(u))}
-                >
-                  Update
-                </button>
+              <td className="p-2">
                 <button
                   className="bg-red-500 px-2 py-1 rounded text-white"
                   onClick={() => mutationDelete.mutate(u.id)}

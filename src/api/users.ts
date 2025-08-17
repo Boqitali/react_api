@@ -8,9 +8,7 @@ export interface User {
   avatar?: string;
 }
 
-// Agar resource `students` bo'lsa:
 const API_URL = "https://689e1c313fed484cf876586e.mockapi.io/users";
-// Agar resource `users` bo'lsa, yuqoridagini `.../users` ga almashtiring.
 
 export const getUsers = async (): Promise<User[]> => {
   const res = await axios.get<User[]>(API_URL);
